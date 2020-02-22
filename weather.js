@@ -17,9 +17,9 @@ function getCityName() {
 
 // make api call to openweather api
 function getWeatherData(cityName) {
-  // eventually, grab api key from env variable
+  // if we want to, grab api key from env variable
   const key = 'your key here';
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}`)
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${key}`)
     .then((response) => {
       return response.json();
     })
@@ -33,14 +33,26 @@ function getWeatherData(cityName) {
 
 // add desired weather data to the dom
 function appendWeatherData(weatherData) {
-  console.log(weatherData);
-  // `http://openweathermap.org/img/wn/${iconValue}@2x.png`
-  // append image of the weather
+  const description = weatherData.weather[0].description;
+  appendDescription(description);
+
+  const temp = weatherData.main.temp;
+  appendTemp(temp);
+
+  const weatherIcon = weatherData.weather[0].icon;
+  appendImage(weatherIcon);
 }
 
-// convert temp
-// add temp val
+function appendTemp(temp) {
 
-// add desc. val
+}
 
-// append image
+function appendDescription(description) {
+
+}
+
+// append image to dom
+function appendImage(description) {
+  // we will reuse the link from the old fetch call for the image
+  // `http://openweathermap.org/img/wn/${iconValue}@2x.png`
+}
