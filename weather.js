@@ -7,7 +7,6 @@ searchButton.addEventListener('click', function () {
   const cityName = getCityName();
   // search api for city name
   getWeatherData(cityName);
-  // apend weather data
 });
 
 // take data from city input
@@ -25,22 +24,23 @@ function getWeatherData(cityName) {
       return response.json();
     })
     .then((weatherData) => {
-      //make 2nd api call
-      getWeatherImage(weatherData.weather[0].icon)
-      return weatherData;
+      appendWeatherData(weatherData);
     })
     .catch((error) => {
       console.error('Error:', error);
     });
 }
 
-// make second call for weather icon to api
-function getWeatherImage(iconValue) {
-  fetch(`http://openweathermap.org/img/wn/${iconValue}@2x.png`)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+// add desired weather data to the dom
+function appendWeatherData(weatherData) {
+  console.log(weatherData);
+  // `http://openweathermap.org/img/wn/${iconValue}@2x.png`
+  // append image of the weather
 }
+
+// convert temp
+// add temp val
+
+// add desc. val
+
+// append image
