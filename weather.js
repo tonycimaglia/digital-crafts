@@ -18,7 +18,7 @@ function getCityName() {
 // make api call to openweather api
 function getWeatherData(cityName) {
   // in a later lesson, we can get the api key from an env variable using node / .env
-  const key = '258633aea1ca055232968caa6b370dd6';
+  const key = 'your key here';
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${key}`)
     .then((response) => {
       return response.json();
@@ -55,6 +55,11 @@ function appendDescription(description) {
 
 // append image to dom
 function appendImage(iconName) {
-  // we will reuse the link from the old fetch call for the image
-  // `http://openweathermap.org/img/wn/${iconName}@2x.png`
+  // if the image exists, create and append it. 
+  const weatherImage = document.createElement('img');
+  weatherImage.src = `http://openweathermap.org/img/wn/${iconName}@2x.png`;
+  weatherImage.alt = 'A picture of the current weather';
+
+  const imageContainer = document.querySelector('.icon');
+  imageContainer.appendChild(weatherImage);
 }
