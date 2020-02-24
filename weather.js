@@ -45,7 +45,7 @@ function appendWeatherData(weatherData) {
 
 function appendTemp(temp) {
   const tempElement = document.querySelector('.temperature');
-  tempElement.textContent = temp;
+  tempElement.textContent = `${temp}&deg;`;
 }
 
 function appendDescription(description) {
