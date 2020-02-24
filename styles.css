@@ -1,3 +1,22 @@
-body {
-  background-color: papayawhip;
+body, input{
+  background-color: rgb(14, 10, 25);
+  color: white;
+}
+
+button {
+  background-color: rgb(71, 23, 246);
+  color: white;
+}
+
+label, input, button {
+  height: 2rem;
+  border: none;
+}
+
+.temperature {
+  font-size: 4rem;
+}
+
+.description {
+  font-size: 1.5rem;
 }
