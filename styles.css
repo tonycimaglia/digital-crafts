@@ -1,7 +1,9 @@
 /* colors and sizing */
-body, input{
+body,
+input {
   background-color: rgb(14, 10, 25);
   color: white;
+  font-family: 'Roboto';
 }
 
 button {
@@ -34,7 +36,8 @@ button {
   font-size: 3rem;
 }
 
-.description, input {
+.description,
+input {
   font-size: 1.5rem;
 }
 
@@ -45,13 +48,13 @@ button {
   align-items: center;
 }
 
-.searchContainer {
+.search-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.inputContainer {
+.input-container {
   max-width: 70%;
   display: flex;
   flex-direction: column-reverse;
