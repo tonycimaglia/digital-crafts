@@ -1,24 +1,19 @@
 
-// select button
 const searchButton = document.querySelector('button');
 
-// register click event
 searchButton.addEventListener('click', function () {
   const cityName = getCityName();
-  // search api for city name
   getWeatherData(cityName);
 });
 
-// take data from city input
 function getCityName() {
   const cityInput = document.querySelector('input');
   return cityInput.value;
 };
 
 let dataIsValid = false;
-// make api call to openweather api
+
 function getWeatherData(cityName) {
-  // in a later lesson, we can get the api key from an env variable using node / .env
   const key = 'your api key here';
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${key}`)
     .then((response) => {
@@ -26,6 +21,7 @@ function getWeatherData(cityName) {
     })
     .then((weatherData) => {
       dataIsValid = validateData(weatherData);
+
       if (dataIsValid) appendWeatherData(weatherData);
     })
     .catch((error) => {
@@ -34,30 +30,30 @@ function getWeatherData(cityName) {
 };
 
 function validateData(weatherData) {
-  if (weatherData.code === '404' || '401') {
-    return false
+  if (weatherData.cod === 200) {
+    return true
   }
-  return true;
+  return false;
 }
 
 // add desired weather data to the dom
 function appendWeatherData(weatherData) {
   const description = weatherData.weather[0].description;
-  appendDescription(description);
+  setDescription(description);
 
   const temp = weatherData.main.temp;
-  appendTemp(temp);
+  setTemp(temp);
 
   const weatherIcon = weatherData.weather[0].icon;
   appendImage(weatherIcon);
 }
 
-function appendTemp(temp) {
+function setTemp(temp) {
   const tempElement = document.querySelector('.temperature');
   tempElement.innerHTML = `${temp}&deg;`;
 };
 
-function appendDescription(description) {
+function setDescription(description) {
   const descriptionElement = document.querySelector('.description');
   descriptionElement.textContent = description;
 };
