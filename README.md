@@ -16,5 +16,8 @@ When it came to using the fetch api, I used promises instead of async await beca
 
 The app can be easily be deployed easily long as you set the api key value in weather.js.
 
-It can be seen deployed here: https://app.netlify.com/sites/priceless-chandrasekhar-301ede/overview
+It can be seen deployed here: https://priceless-chandrasekhar-301ede.netlify.com/
 
+I also tried to make sure the app was completely accessible. When run through lighthouse, the app scores a 100 for accessibility . 
+
+(insert image of score here)
