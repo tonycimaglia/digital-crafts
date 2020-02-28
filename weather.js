@@ -9,7 +9,7 @@ searchButton.addEventListener('click', function () {
 const cityInput = document.querySelector('input');
 
 cityInput.addEventListener('keyup', function (event) {
-  if (event.keyCode === 13) {
+  if (event.keyCode === 13) { // checks if user hits enter on the city input
     const cityName = getCityName();
     getWeatherData(cityName);
   }
@@ -29,12 +29,14 @@ function getWeatherData(cityName) {
     })
     .then((weatherData) => {
       dataIsValid = validateData(weatherData);
-
-      if (dataIsValid) appendWeatherData(weatherData);
+      if (dataIsValid) { appendWeatherData(weatherData) };
     })
     .catch((error) => {
       console.error('Error:', error);
-    });
+    })
+    .finally(() => {
+      clearSearchText();
+    });;
 };
 
 function validateData(weatherData) {
@@ -42,31 +44,34 @@ function validateData(weatherData) {
     return true
   }
   return false;
-}
+};
 
 // add desired weather data to the dom
 function appendWeatherData(weatherData) {
-  const description = weatherData.weather[0].description;
-  setDescription(description);
+  const location = weatherData.name
+  setElementText(location, '.location');
 
-  const temp = weatherData.main.temp;
+  const description = weatherData.weather[0].description;
+  setElementText(description, '.description');
+
+  const temp = Math.round(weatherData.main.temp);
   setTemp(temp);
 
   const weatherIcon = weatherData.weather[0].icon;
   appendImage(weatherIcon);
-}
+};
+
+function setElementText(stringVal, className) {
+  const node = document.querySelector(className);
+  node.textContent = stringVal;
+};
 
 function setTemp(temp) {
   const tempElement = document.querySelector('.temperature');
   tempElement.innerHTML = `${temp}&deg;`;
 };
 
-function setDescription(description) {
-  const descriptionElement = document.querySelector('.description');
-  descriptionElement.textContent = description;
-};
 
-// append image to dom
 function appendImage(iconName) {
   const weatherImage = document.querySelector('img');
   if (weatherImage === null) {
@@ -86,4 +91,8 @@ function createImageElement(iconName) {
 function setImage(iconName, weatherImage) {
   weatherImage.src = `http://openweathermap.org/img/wn/${iconName}@2x.png`;
   weatherImage.alt = 'A picture of the current weather';
-}
+};
+
+function clearSearchText() {
+  cityInput.value = '';
+};
