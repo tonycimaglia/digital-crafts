@@ -6,8 +6,16 @@ searchButton.addEventListener('click', function () {
   getWeatherData(cityName);
 });
 
+const cityInput = document.querySelector('input');
+
+cityInput.addEventListener('keyup', function (event) {
+  if (event.keyCode === 13) {
+    const cityName = getCityName();
+    getWeatherData(cityName);
+  }
+});
+
 function getCityName() {
-  const cityInput = document.querySelector('input');
   return cityInput.value;
 };
 
