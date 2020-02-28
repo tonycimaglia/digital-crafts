@@ -29,7 +29,7 @@ function getWeatherData(cityName) {
     })
     .then((weatherData) => {
       dataIsValid = validateData(weatherData);
-      if (dataIsValid) { appendWeatherData(weatherData) };
+      dataIsValid ? appendWeatherData(weatherData) : appendErrorMessage();
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -60,6 +60,11 @@ function appendWeatherData(weatherData) {
   const weatherIcon = weatherData.weather[0].icon;
   appendImage(weatherIcon);
 };
+
+function appendErrorMessage() {
+  const errorMessage = `Can't find data for ${cityInput.value}`;
+  setElementText(errorMessage, '.description');
+}
 
 function setElementText(stringVal, className) {
   const node = document.querySelector(className);
