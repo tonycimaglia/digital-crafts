@@ -10,12 +10,13 @@ I figured if this is supposed to be teachable, it should be left open for a stud
   - adding the ability store the results for multiple cities rather than replacing the exisiting weather data. 
   - ability to switch from celcius to fahrenheit in the UI.
 
+## General Overview
 I wrote simple functions that did one thing that someone could read and understand from the top to bottom of the js.
 
 When it came to using the fetch api, I used promises instead of async await because it mirrors the examples in the MDN web docs for using fetch. It would be easy for a student to reference and figure out how the fetch request is working.
 
-It can be seen deployed here: https://priceless-chandrasekhar-301ede.netlify.com/
-
 I also tried to make sure the app was completely accessible. When run through lighthouse, the app scores a 100 for accessibility.
 
 (insert image of score here)
+
+It can be seen deployed here: https://priceless-chandrasekhar-301ede.netlify.com/
