@@ -1,6 +1,6 @@
 # Vanilla JavaScript Weather App
 
-When I spoke to Harmony over the phone, she mentioned that one of the most important things about this assessment was making sure it was teachable. With that in mind. I wanted to hit all the requirements and the bonus listed out in the code assessment document, but also leave room for further improvements
+When I spoke to Harmony over the phone, she mentioned that one of the most important things about this assessment was making sure it was teachable. With that in mind. I wanted to hit all the requirements and the bonus listed out in the code assessment document, but also leave room for further improvements. When I was in a boot camp, I always learned best when I actually built things myself or watched them being imroved rather than looking at a complete solution.
 
 ## Future Versions
 I figured if this is supposed to be teachable, it should be left open for a student to extend and build upon. All they would have to do is add their own api key to weather.js and then they could start adding on to the existing logic. Here are some of the future improvements I had in mind for a student to build:
