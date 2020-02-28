@@ -48,6 +48,8 @@ function validateData(weatherData) {
 
 // add desired weather data to the dom
 function appendWeatherData(weatherData) {
+  toggleWeatherDataVisibility('show');
+
   const location = weatherData.name
   setElementText(location, '.location');
 
@@ -62,6 +64,7 @@ function appendWeatherData(weatherData) {
 };
 
 function appendErrorMessage() {
+  toggleWeatherDataVisibility('hide');
   const errorMessage = `Can't find data for ${cityInput.value}`;
   setElementText(errorMessage, '.description');
 }
@@ -97,6 +100,20 @@ function setImage(iconName, weatherImage) {
   weatherImage.src = `http://openweathermap.org/img/wn/${iconName}@2x.png`;
   weatherImage.alt = 'A picture of the current weather';
 };
+
+function toggleWeatherDataVisibility(action) {
+  const weatherElements = document.querySelectorAll('.weatherData');
+  if (action === 'show') {
+    weatherElements.forEach((element) => {
+      element.style.display = 'block';
+    });
+  }
+  if (action === 'hide') {
+    weatherElements.forEach((element) => {
+      element.style.display = 'none';
+    });
+  }
+}
 
 function clearSearchText() {
   cityInput.value = '';
